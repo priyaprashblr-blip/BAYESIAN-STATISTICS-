@@ -1,0 +1,16 @@
+"quantity","value"
+"sd_std_resid",0.986217335425439
+"mean_resid",1.69139844784616e-05
+"frac_gt2",0.0460375629867155
+"frac_gt3",0.0155748969308291
+"excess_kurtosis",34.0814146411995
+"skewness",-3.00772641421719
+"lag1_mean",0.857251619285892
+"lag1_median",0.932943245417978
+"mean_resid_min",-0.978536497576723
+"mean_resid_max",0.456687965309445
+"year_of_min",1951
+"year_of_max",1967
+"fitted_min",20.0233807693158
+"fitted_max",86.9418102549422
+"rmse",2.36068064414972

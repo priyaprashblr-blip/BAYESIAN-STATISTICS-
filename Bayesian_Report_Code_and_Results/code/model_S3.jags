@@ -1,0 +1,42 @@
+model {
+  #likelihood 
+  for (n in 1:N) {
+    y[n] ~ dnorm(mu[n], tau)
+    mu[n] <- a[cty[n]] + b[cty[n]] * t[n] + q[cont[n]] * t2[n] + g[cont[n]] * covid[n]
+  }
+
+  #  country level: partial pooling towards the continent 
+  for (i in 1:J) {
+    a[i] ~ dnorm(alpha[ccont[i]], tau_a)
+    b[i] ~ dnorm(beta[ccont[i]],  tau_b)
+  }
+
+  #PRIORS-BEGIN
+  for (k in 1:K) {
+    alpha[k] ~ dnorm(65, 1/225)
+    beta[k]  ~ dnorm(3, 1/4)
+    q[k]     ~ dnorm(0, 1)
+    g[k]     ~ dnorm(0, 1/4)
+  }
+  tau   ~ dgamma(0.01, 0.01)
+  tau_a ~ dgamma(0.01, 0.01)
+  tau_b ~ dgamma(0.01, 0.01)
+  #PRIORS-END
+
+  # standard deviations (derived)
+  sigma   <- 1 / sqrt(tau)
+  sigma_a <- 1 / sqrt(tau_a)
+  sigma_b <- 1 / sqrt(tau_b)
+
+  #  predictions for 2030 (posterior predictive distributions)
+  for (p in 1:P) {                       # six named countries
+    mupred[p] <- a[cpred[p]] + b[cpred[p]] * tNew + q[contpred[p]] * pow(tNew, 2)
+    ypred[p]  ~ dnorm(mupred[p], tau)
+  }
+  for (k in 1:K) {                       # a new, unseen country on each continent
+    aNew[k] ~ dnorm(alpha[k], tau_a)
+    bNew[k] ~ dnorm(beta[k],  tau_b)
+    yNew[k] ~ dnorm(aNew[k] + bNew[k] * tNew + q[k] * pow(tNew, 2), tau)
+  }
+
+}

@@ -1,0 +1,10 @@
+"quantity","value"
+"first_50_kept",1.03486636283466
+"first_100_kept",1.05857036157888
+"first_250_kept",1.0183806450564
+"first_500_kept",1.02108019779156
+"first_1000_kept",1.00413522229893
+"max_lag1_acf_thinned",0.353803783039054
+"median_lag1_acf_thinned",0.0158947713790238
+"min_ess_per_draw",0.447836562040744
+"median_ess_per_draw",0.976166435015567

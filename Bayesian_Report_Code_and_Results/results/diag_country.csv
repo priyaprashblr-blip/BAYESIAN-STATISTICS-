@@ -1,0 +1,2 @@
+"n_params","rhat_max","rhat_gt_105","rhat_gt_101","ess_min","ess_median","ess_lt_1000","geweke_frac_fail","n_tests"
+472,1.00139093755861,0,0,12518.8764741796,14814.6543048216,0,0.0529661016949153,1416
